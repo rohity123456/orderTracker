@@ -30,4 +30,8 @@
 }
 .graphNode__right p {
   margin: -5px 5px 1rem 0;
+  font-size: clamp(11px, 2vw, 14px);
+}
+.graphNode__right h4 {
+  font-size: clamp(12px, 2vw, 16px);
 }
