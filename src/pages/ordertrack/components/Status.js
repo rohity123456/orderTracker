@@ -2,6 +2,7 @@ import React from "react";
 import {
   getFirstElement,
   getInfoFromDateString,
+  isDelivered,
 } from "../../../helper/helperFunctions";
 import CONSTANTS from "../../../helper/constants";
 import "./css/Status.css";
@@ -16,21 +17,17 @@ const fallBackOrderInfo = {
   arrivingOn: "1/12/2021",
   shippingInfo: [],
 };
-const {
-  STATUS_ORDER_DELIVERED,
-  ORDER_DELIVERED_MESSAGE,
-  ORDER_NOT_DELIVERED_MESSAGE,
-} = CONSTANTS;
+const { ORDER_DELIVERED_MESSAGE, ORDER_NOT_DELIVERED_MESSAGE } = CONSTANTS;
 const Status = ({ orderInfo = fallBackOrderInfo }) => {
   const [open, setOpen, ref] = useAwayListener(false);
   const { arrivingOn, shippingInfo, status } = orderInfo;
   const { day = "N/A", month = "N/A", date = "N/A" } = getInfoFromDateString(
     arrivingOn
   );
-  const statusMsg =
-    status?.toLowerCase() === STATUS_ORDER_DELIVERED
-      ? ORDER_DELIVERED_MESSAGE
-      : ORDER_NOT_DELIVERED_MESSAGE;
+  const orderDelivered = isDelivered(status);
+  const statusMsg = orderDelivered
+    ? ORDER_DELIVERED_MESSAGE
+    : ORDER_NOT_DELIVERED_MESSAGE;
   const { activities } = getFirstElement(shippingInfo);
   const { activityMsg: latestActivityMsg } = getFirstElement(activities);
 
@@ -42,7 +39,9 @@ const Status = ({ orderInfo = fallBackOrderInfo }) => {
     <div className="bottomShadowcontainer statusContainer">
       <div className="statusContainer__top">
         <h2 className="clrgrey">{statusMsg}</h2>
-        <h2 style={{ marginTop: "-10px" }}>Arriving On {month}</h2>
+        <h2 style={{ marginTop: "-10px" }}>{`${
+          !orderDelivered ? `Arriving On` : `Delivered On`
+        } ${month}`}</h2>
         <ButtonWithIcon text="Share the link" icon={replyImg} />
         <h1 className="clrgreen">{day}</h1>
         <h1 className="clrgreen h1big">{date}</h1>
