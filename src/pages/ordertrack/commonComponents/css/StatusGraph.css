@@ -1,0 +1,33 @@
+.graphNode {
+  display: flex;
+}
+.graphNode__left {
+  border-right: 1px solid var(--clr-dark-grey);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 5rem;
+  min-width: 4rem;
+  position: relative;
+}
+.graphNode__left h3 {
+  margin: 0 0.5rem;
+  font-size: clamp(12px, 2vw, 16px);
+}
+.graphNode__left::after {
+  content: "";
+  width: 10px;
+  position: absolute;
+  height: 10px;
+  border-radius: 50%;
+  right: -5px;
+  background-color: var(--clr-darker-grey);
+}
+.graphNode__right {
+  margin: 0 10px 10px;
+  width: 100%;
+  border-bottom: 1px solid #000;
+}
+.graphNode__right p {
+  margin: -5px 5px 1rem 0;
+}

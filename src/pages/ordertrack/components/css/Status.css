@@ -1,0 +1,30 @@
+.statusContainer {
+  padding: 0;
+}
+.statusContainer__top {
+  padding: 2rem 0 0 1.5rem;
+}
+.statusContainer__top h2 {
+  font-size: clamp(20px, 2vw, 30px);
+  font-weight: 700;
+}
+.statusContainer__top h1 {
+  font-size: 35px;
+  font-weight: 700;
+}
+.statusContainer__top p {
+  color: var(--clr-dark-grey);
+}
+.status_dropdown_container {
+  position: relative;
+}
+
+.statusContainer__bottom {
+  display: grid;
+  margin-top: 1.5rem;
+  grid-template-columns: repeat(2, 1fr);
+}
+.statusContainer__bottom button {
+  padding: 1rem 0;
+  border-top: 1px solid rgba(112, 112, 112, 0.1);
+}

@@ -1,0 +1,9 @@
+.buttonWithIcon {
+  color: var(--clr-primary);
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+}
+.buttonWithIcon span {
+  margin: 0 2px;
+}
