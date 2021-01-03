@@ -43,6 +43,12 @@ button {
   padding: 0;
   outline: none;
 }
+.error {
+  display: grid;
+  height: 100vh;
+  text-align: center;
+  place-items: center;
+}
 .bottomShadowcontainer {
   padding: 1rem;
   margin-bottom: 1rem;
@@ -64,7 +70,7 @@ button {
 }
 .backGroundPrimary {
   background-color: var(--clr-primary);
-  color: white;
+  color: var(--container-white);
 }
 .flexDirectionRow {
   flex-direction: row !important;
